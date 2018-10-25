@@ -1,0 +1,391 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	height: 100vh;
+	font-size: 100%;
+}
+
+#root {
+	height: 100%;
+}
+
+.App {
+	background-image: url("./img/background.svg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	height: 100%;
+	overflow: auto;
+	color: #343434;
+	display: grid;
+  	grid-template-columns: 1fr minmax(min-content, max-content) 1fr;
+  	grid-template-rows: 100px 70px minmax(min-content, max-content) auto minmax(min-content, max-content);
+  	grid-template-areas: 
+  	". . ."
+  	". header ." 
+  	". content ." 
+  	". . . " 
+  	"footer footer footer";
+}
+
+header {
+	background: linear-gradient(to bottom, #114B5F, #087E8B);
+	/*box-shadow: 0px 3px 5px 2px rgba(0,0,0,0.2);*/
+	border-radius: 2px;
+	color: #fff;
+	text-align: center;
+	grid-area: header;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	border: 1px solid rgb(8, 126, 139);
+	
+}
+
+header h1 {
+	text-shadow: 0 0 10px #114B5F;
+   	margin: 0 auto;
+   	text-transform: uppercase;
+   	font-family: Georgia;
+}
+
+label[for="toggle-menu"] {
+	position: relative;
+	display: none;
+	cursor: pointer;
+	float: right;
+	padding: 0.5em;
+}
+
+label[for="toggle-menu"] div {
+	width: 1.8em;
+    height: 0.2em;
+    background-color: #fff;
+    border-radius: 4px;
+    
+}
+
+label[for="toggle-menu"] div:not(:last-child) {
+	margin-bottom: 0.3em;
+}
+
+#toggle-menu {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: none;
+	cursor: pointer;
+	opacity: 0;
+}
+
+#frosted-bg {
+	background: inherit;
+	grid-area: content;
+ 	overflow: hidden; 
+ 	position: relative;
+ 	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+#frosted-bg::before {
+	content:"";
+	background: inherit;
+	position: absolute;
+	box-shadow: 0px 3px 5px 2px rgba(0,0,0,0.4);
+	filter: blur(20px);
+	width: 100%;
+	height: 100%;
+
+}
+
+#content {
+ 	position: relative;
+ 	width: 100%;
+	background-color: rgba(255, 255, 255, 0.5);	
+}
+
+#content p {
+	text-align: center;
+	padding: 1em;
+	font-family: Verdana;
+}
+
+form {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	/*padding: 1em 2em 2em 2em;*/
+	font-size: 1.1em;
+}
+
+form p {
+	padding: 1em;
+}
+
+form label {
+	letter-spacing: .03em;
+	align-self: center;
+	font-family: Verdana;
+}
+
+form label:last-of-type {
+	margin-left: 2em;
+}
+
+form input {
+	width: 100px;
+	border: none;
+	background-color: transparent;
+	font-family: Georgia;
+	border-bottom: 2px solid rgba(8, 126, 139, 0.5);
+	border-radius: 2px;
+	font-size: 1em;
+	
+}
+
+form input[type=text] {
+	color: #343434;
+}
+
+form input[type=text]:focus {
+    outline: none;
+    border: none;
+    border-bottom: 2px solid rgb(8, 126, 139);
+    background-color: transparent;
+   
+}
+
+@-webkit-keyframes autofill {
+    to {
+        background: transparent;
+    }
+}
+
+form input:-webkit-autofill {
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+    -webkit-text-fill-color: #343434 !important;
+}
+
+button {
+	background-color: #DD8F54;
+	background: linear-gradient(#dd813b, #DD8F54);
+	border-radius: 8px;
+	border-color: #DD8F54;
+	color: #fff;
+	text-shadow: 0 0 2px #5f6060;
+	padding: 0.7em;
+	cursor: pointer;
+	font-size: 0.8em;
+	font-family: Verdana;
+	margin-left: 2em;
+}
+
+button:focus {
+	outline: none;
+}
+
+#weather-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#weather-container h3 {
+	padding-top: 1em;
+	padding-bottom: 1em;
+	font-size: 1.5em;
+}
+
+#weather-wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 100%;
+}
+
+#weather-wrapper p {
+	padding: 1em;
+}
+
+#icon {
+	text-align: center;	
+	padding-top: 1em;
+	font-size: 3em;
+}
+
+#icon .wi:first-child {
+	font-size: 1.5em;
+	color: #4BA1AA;
+	padding-right: 0.6em;
+}
+
+#w-details-wrapper {
+	display: flex;
+	flex-direction: row;
+}
+
+#w-details-wrapper .w-details .wi:first-child {
+	font-size: 2em;
+	margin-right: 0.2em;
+}
+
+.w-details {
+	padding: 1.8em;
+	font-size: 1.1em;
+}
+
+footer {
+	text-align: center;
+	color: #fff;
+	width: 100%;
+	padding: 1em;
+	grid-area: footer;
+}
+
+
+@media only screen and (max-width: 1024px) { 
+	.App {
+		grid-template-columns: 0.5fr minmax(min-content, 700px) 0.5fr;
+	}
+}
+
+
+@media only screen and (max-width: 700px) {
+
+	.App {
+		grid-template-columns: auto 1fr auto;
+  		grid-template-rows: 50px minmax(min-content, max-content) auto minmax(min-content, max-content);
+  		grid-template-areas: 
+  		". header ." 
+  		". content ." 
+  		". . ."
+  		"footer footer footer";
+	}
+
+	header {
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+	}
+
+	header h1 {
+		font-size: 1.4em; 
+	}
+
+	label[for="toggle-menu"] {
+		display: block;
+	}	
+
+	form {
+		display: none;
+		font-size: 1em;
+		flex-wrap: wrap;
+	}
+
+	#toggle-menu {
+		display: flex;
+		
+	}
+	
+	#toggle-menu:not(:checked) ~ form {
+	   display: flex;
+	}
+
+	#toggle-menu:not(:checked) + label[for="toggle-menu"] div:nth-child(2)  {
+		width: 0;
+	}
+
+	#toggle-menu:not(:checked) + label[for="toggle-menu"] div:last-child {
+		transform: rotate(45deg);
+	}
+
+	#toggle-menu:not(:checked) + label[for="toggle-menu"] div:first-child {
+		transform: rotate(-45deg);
+		
+	}
+
+	#toggle-menu:not(:checked) + label[for="toggle-menu"] div:not(:nth-child(2)) {
+		position: absolute;
+		left: -1em;
+		top: 1em;
+		transition:  transform 0.3s;
+	}
+
+	label[for="toggle-menu"] div {
+		transition:  transform 0.3s;
+	}
+
+	#frosted-bg {
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	#frosted-bg::before { 
+		position: fixed;
+	}
+
+	form {
+		width: 100%;
+	}
+
+	form p {
+		display: flex;
+		flex-direction: column;
+	}
+
+	form label {
+		padding-top: 1em;
+	}
+
+	form label:last-of-type {
+		margin-left: 0;
+	}
+	
+	form input {
+		width: 150px;
+		font-size: 1.2em;
+		padding: 0.5em;
+		text-align: center;
+	}
+
+	form button {
+		margin: 1em;
+	}
+
+	#weather-container {
+		width: 100%;
+	}
+
+	#weather-container h3 {
+		font-size: 1.4em;
+	}
+
+	#weather-wrapper p {
+		padding: 2em;
+		font-size: 1.1em;
+	}
+	
+	#icon {
+		font-size: 3em;
+	}
+	
+	#w-details-wrapper {
+		flex-direction: column;
+	}
+	
+	.w-details {
+		align-self: center;
+		font-size: 1.2em;
+	}
+
+	footer {
+		position: relative;
+	}
+}
