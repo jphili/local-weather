@@ -19,7 +19,7 @@ export default class App extends React.Component {
 	getWeatherData = (event) => {
 		event.preventDefault();
 
-		if (event.target.elements.city.value) {
+		if (event.target.elements.city.value) {		// if location is given, get weather using OWM API
 			var countries = require('country-list')();
 			const city = event.target.elements.city.value;
 			const country = countries.getCode(event.target.elements.country.value);
@@ -27,7 +27,7 @@ export default class App extends React.Component {
 			fetch("https://api.openweathermap.org/data/2.5/weather?q=" + city + "," + country + "&units=metric&appid=79f89c2b9c7f0bceb7c4b752918ffeba")
   			.then(response => {
   				if (response.status === 200) {
-  					return response.json();	
+  					return response.json()
   				}	
   				else {
   					throw new Error("Location could not be resolved correctly.")
@@ -35,7 +35,6 @@ export default class App extends React.Component {
   			})
   			.then((json => {
   				this.setState({location: true, apiError: false, weatherData: json})
-  				console.log(this.state.location);
   			}))
   			.catch((error) => {
   				this.setState({apiError: true})
